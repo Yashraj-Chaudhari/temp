@@ -1,0 +1,466 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "skipped",
+  "type": "dataflow",
+  "quality": "showcase",
+  "startedAt": "2026-10-28T11:33:09.341Z",
+  "specification": {
+    "path": "/home/phenotyping/docs/project-review/dataflow.json",
+    "sha256": "2feefc88dde7a8a6cf2ced75f537b7514033cf75adda92d569505206def79134",
+    "bytes": 5173
+  },
+  "artifact": {
+    "path": "/home/phenotyping/docs/project-review/dataflow.html",
+    "sha256": "c6af2ad64ece77cca2708bd15f29dd99bb3a7fa5dab8574a4a5d5148960428a4",
+    "bytes": 848229
+  },
+  "stages": {
+    "validate": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": null,
+      "execution": "embedded-in-deliver",
+      "command": [
+        "/usr/bin/node",
+        "/root/miniconda3/envs/pheno/share/codex/skills/archify/bin/archify.mjs",
+        "deliver",
+        "dataflow",
+        "/home/phenotyping/docs/project-review/dataflow.json",
+        "/home/phenotyping/docs/project-review/dataflow.html",
+        "--quality",
+        "showcase",
+        "--repo-root",
+        "/home/phenotyping",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": true,
+        "command": "validate",
+        "specification": {
+          "sha256": "2feefc88dde7a8a6cf2ced75f537b7514033cf75adda92d569505206def79134",
+          "bytes": 5173
+        },
+        "validation": {
+          "checksPassed": 9,
+          "checkCount": 9,
+          "compositionProfile": "showcase",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 0
+        }
+      }
+    },
+    "deliver": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 777,
+      "command": [
+        "/usr/bin/node",
+        "/root/miniconda3/envs/pheno/share/codex/skills/archify/bin/archify.mjs",
+        "deliver",
+        "dataflow",
+        "/home/phenotyping/docs/project-review/dataflow.json",
+        "/home/phenotyping/docs/project-review/dataflow.html",
+        "--quality",
+        "showcase",
+        "--repo-root",
+        "/home/phenotyping",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "receiptId": "5f240239-06f5-4ebc-9019-33f835a76504",
+        "ok": true,
+        "command": "deliver",
+        "type": "dataflow",
+        "input": "/home/phenotyping/docs/project-review/dataflow.json",
+        "output": "/home/phenotyping/docs/project-review/dataflow.html",
+        "specification": {
+          "sha256": "2feefc88dde7a8a6cf2ced75f537b7514033cf75adda92d569505206def79134",
+          "bytes": 5173
+        },
+        "artifact": {
+          "sha256": "c6af2ad64ece77cca2708bd15f29dd99bb3a7fa5dab8574a4a5d5148960428a4",
+          "bytes": 848229
+        },
+        "validation": {
+          "checksPassed": 9,
+          "checkCount": 9,
+          "compositionProfile": "showcase",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 0
+        },
+        "evidence": {
+          "verified": true,
+          "repository": "https://github.com/Yashraj-Chaudhari/phenotyping",
+          "revision": "a655fc2c36fc4c7e18ad0efe13d3140055b5c705",
+          "references": 15
+        },
+        "update": {
+          "status": "unavailable",
+          "installedVersion": null,
+          "availableVersion": null,
+          "releaseNotes": null,
+          "checkedAt": null,
+          "source": null,
+          "noticeRequired": false,
+          "noticeText": null,
+          "reason": "disabled"
+        }
+      }
+    },
+    "check": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 347,
+      "command": [
+        "/usr/bin/node",
+        "/root/miniconda3/envs/pheno/share/codex/skills/archify/bin/archify.mjs",
+        "check",
+        "/home/phenotyping/docs/project-review/dataflow.html",
+        "--require-provenance"
+      ],
+      "receipt": {
+        "ok": true,
+        "file": "/home/phenotyping/docs/project-review/dataflow.html",
+        "artifact": {
+          "sha256": "c6af2ad64ece77cca2708bd15f29dd99bb3a7fa5dab8574a4a5d5148960428a4",
+          "bytes": 848229
+        },
+        "checks": [
+          {
+            "name": "single_svg",
+            "ok": true,
+            "details": [
+              "found 1 <svg> block(s)"
+            ]
+          },
+          {
+            "name": "finite_svg",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "orthogonal_arrows",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "label_route_clearance",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "relationship_crossings",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "relationship_corridors",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "container_border_runs",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "route_rhythm",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "legend_clearance",
+            "ok": true,
+            "details": []
+          }
+        ],
+        "composition": {
+          "schemaVersion": 1,
+          "profile": "showcase",
+          "status": "pass",
+          "summary": {
+            "errors": 0,
+            "warnings": 0
+          },
+          "metrics": {
+            "properCrossings": 0,
+            "resolvedCrossovers": 0,
+            "ambiguousCorridors": 0,
+            "arrowheadCollisions": 0,
+            "containerBorderRuns": 0,
+            "labelRouteClearanceIssues": 0,
+            "labelCanvasOverflowIssues": 0,
+            "minLabelRouteClearance": 5,
+            "desktopReadabilityIssues": 0,
+            "viewportHeightIssues": 0,
+            "minProjectedNodeTextPx": 6.5,
+            "maxBends": 4,
+            "routesOverSuggestedBends": 3,
+            "maxStretch": 1.918,
+            "routesOverSuggestedStretch": 3,
+            "minSegmentPx": 24,
+            "minInteriorSegmentPx": 68.5,
+            "shortSegmentCount": 0,
+            "shortEndpointSegmentCount": 0,
+            "shortInteriorSegmentCount": 0,
+            "microSegmentCount": 0
+          },
+          "suggestedLimits": {
+            "bendsPerRelationship": 2,
+            "stretch": 1.35,
+            "segmentPx": 16,
+            "microSegmentPx": 8
+          },
+          "routeReview": {
+            "crossings": [],
+            "detours": [
+              {
+                "relationship": {
+                  "from": "training",
+                  "to": "saved",
+                  "label": "prints metrics / displays plots",
+                  "collectionIndex": 1,
+                  "artifactIndex": 2
+                },
+                "bends": 4,
+                "stretch": 1.918,
+                "directCorridorBlockers": [
+                  {
+                    "id": "modeldefs",
+                    "label": "deeplab.py / unet.py",
+                    "box": [
+                      37,
+                      356,
+                      126,
+                      58
+                    ]
+                  }
+                ]
+              },
+              {
+                "relationship": {
+                  "from": "training",
+                  "to": "splitfiles",
+                  "label": "cells 5 / 18 write lists",
+                  "collectionIndex": 2,
+                  "artifactIndex": 3
+                },
+                "bends": 4,
+                "stretch": 1.652,
+                "directCorridorBlockers": [
+                  {
+                    "id": "modeldefs",
+                    "label": "deeplab.py / unet.py",
+                    "box": [
+                      37,
+                      356,
+                      126,
+                      58
+                    ]
+                  },
+                  {
+                    "id": "saved",
+                    "label": "Notebook cell outputs",
+                    "box": [
+                      28.5,
+                      470,
+                      143,
+                      58
+                    ]
+                  }
+                ]
+              },
+              {
+                "relationship": {
+                  "from": "splitfiles",
+                  "to": "training",
+                  "label": "cell 20 reads *_et lists",
+                  "collectionIndex": 3,
+                  "artifactIndex": 4
+                },
+                "bends": 4,
+                "stretch": 1.468,
+                "directCorridorBlockers": [
+                  {
+                    "id": "modeldefs",
+                    "label": "deeplab.py / unet.py",
+                    "box": [
+                      37,
+                      356,
+                      126,
+                      58
+                    ]
+                  },
+                  {
+                    "id": "saved",
+                    "label": "Notebook cell outputs",
+                    "box": [
+                      28.5,
+                      470,
+                      143,
+                      58
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "leadingSpace": {
+            "measured": false,
+            "reviewSuggested": false
+          },
+          "desktopReadability": {
+            "budgetBasis": "legacy-930",
+            "readerContract": "declared-wide-v1",
+            "availableDiagramWidth": 930,
+            "actualBudgetPx": 930,
+            "limit": "legacy",
+            "requestedTargetPx": null,
+            "requestedTargetMet": null,
+            "hardFloorPx": 6,
+            "hardFloorMet": true,
+            "minimumOwner": {
+              "kind": "node",
+              "id": "px4"
+            },
+            "minimumSourceTextPx": 6.5,
+            "minimumProjectedTextPx": 6.5,
+            "semanticTextCount": 35
+          },
+          "issues": []
+        },
+        "provenance": "current",
+        "deliveryReceiptId": "5f240239-06f5-4ebc-9019-33f835a76504"
+      }
+    },
+    "browser-check": {
+      "status": "skipped",
+      "exitCode": 2,
+      "durationMs": 446,
+      "command": [
+        "/usr/bin/node",
+        "/root/miniconda3/envs/pheno/share/codex/skills/archify/bin/archify.mjs",
+        "browser-check",
+        "/home/phenotyping/docs/project-review/dataflow.html",
+        "--json",
+        "--require-provenance",
+        "--out-dir",
+        "/home/phenotyping/docs/project-review/dataflow-review-3"
+      ],
+      "execution": "in-process",
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": false,
+        "command": "browser-check",
+        "evidenceKind": "automated-browser",
+        "status": "skipped",
+        "visualReview": "not-requested",
+        "provenance": "current",
+        "deliveryReceiptId": "5f240239-06f5-4ebc-9019-33f835a76504",
+        "artifact": {
+          "path": "/home/phenotyping/docs/project-review/dataflow.html",
+          "sha256": "c6af2ad64ece77cca2708bd15f29dd99bb3a7fa5dab8574a4a5d5148960428a4",
+          "bytes": 848229
+        },
+        "state": {
+          "detail": "read",
+          "motion": "still"
+        },
+        "chrome": {
+          "status": "unavailable",
+          "executable": null
+        },
+        "diagnostics": [
+          {
+            "code": "viewer/chrome-unavailable",
+            "severity": "warning",
+            "message": "No supported browser found. Install Chrome/Chromium (or Microsoft Edge), or set ARCHIFY_CHROME to its executable path.",
+            "subject": {
+              "artifact": "/home/phenotyping/docs/project-review/dataflow.html"
+            },
+            "evidence": {
+              "executable": null
+            },
+            "supportedFixes": [
+              "set ARCHIFY_CHROME to a Chrome/Chromium executable (or Microsoft Edge) and rerun browser-check"
+            ]
+          }
+        ],
+        "containment": {
+          "status": "skipped",
+          "policy": "fit-or-reader-declared-readable-vertical-scroll",
+          "viewports": []
+        },
+        "themeStates": {
+          "status": "skipped",
+          "viewports": []
+        },
+        "readability": {
+          "status": "skipped",
+          "minimumProjectedNodeTextPx": 6,
+          "viewports": []
+        },
+        "viewerChrome": {
+          "status": "skipped",
+          "viewports": []
+        },
+        "captures": {
+          "status": "not-requested",
+          "screenshots": [],
+          "contactSheet": null
+        },
+        "sidecars": {
+          "directory": "/home/phenotyping/docs/project-review/dataflow-review-3",
+          "receipt": "dataflow.browser-check.json",
+          "files": []
+        },
+        "error": "No supported browser found. Install Chrome/Chromium (or Microsoft Edge), or set ARCHIFY_CHROME to its executable path."
+      }
+    }
+  },
+  "browserCheck": {
+    "requested": true,
+    "ran": false
+  },
+  "diagnostics": [
+    {
+      "code": "viewer/chrome-unavailable",
+      "severity": "warning",
+      "message": "No supported browser found. Install Chrome/Chromium (or Microsoft Edge), or set ARCHIFY_CHROME to its executable path.",
+      "subject": {
+        "artifact": "/home/phenotyping/docs/project-review/dataflow.html"
+      },
+      "evidence": {
+        "executable": null
+      },
+      "supportedFixes": [
+        "set ARCHIFY_CHROME to a Chrome/Chromium executable (or Microsoft Edge) and rerun browser-check"
+      ]
+    }
+  ],
+  "evidence": {
+    "receipt": "/home/phenotyping/docs/project-review/dataflow-review-3/dataflow.finalize.json",
+    "summaryReceipt": "/home/phenotyping/docs/project-review/dataflow-review-3/dataflow.finalize-summary.json",
+    "browserCheckReceipt": "/home/phenotyping/docs/project-review/dataflow-review-3/dataflow.browser-check.json"
+  },
+  "visualReview": "not-requested",
+  "failedStage": "browser-check",
+  "finishedAt": "2026-10-28T11:33:11.053Z",
+  "durationMs": 1711,
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-28T10:58:53.274Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  }
+}

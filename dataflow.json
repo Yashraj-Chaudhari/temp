@@ -1,0 +1,322 @@
+{
+  "schema_version": 1,
+  "diagram_type": "dataflow",
+  "meta": {
+    "title": "What the checked-out experiments actually pass between stages",
+    "output": "dataflow.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/Yashraj-Chaudhari/phenotyping",
+      "revision": "a655fc2c36fc4c7e18ad0efe13d3140055b5c705",
+      "provider": "github",
+      "link_mode": "web"
+    }
+  },
+  "stages": [
+    {
+      "label": "Segmentation experiment"
+    },
+    {
+      "label": "Prescription-map experiment"
+    },
+    {
+      "label": "Path and flight-control experiments"
+    },
+    {
+      "label": "Unselected model definitions"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "dataset",
+      "type": "database",
+      "label": "External WeedMap files",
+      "sublabel": "Tiles/RedEdge; absent in checkout",
+      "stage": 0,
+      "row": 0,
+      "sources": [
+        {
+          "path": "README.md",
+          "line": 20,
+          "end_line": 24
+        }
+      ]
+    },
+    {
+      "id": "prepare",
+      "type": "backend",
+      "label": "Prep \u00b7 cells 17\u201318",
+      "sublabel": "hard-coded filter / copy / split",
+      "stage": 0,
+      "row": 1,
+      "sources": [
+        {
+          "path": "weed_detection/practice.ipynb",
+          "line": 1,
+          "end_line": 1
+        }
+      ]
+    },
+    {
+      "id": "prepared",
+      "type": "database",
+      "label": "data_et + ET lists",
+      "sublabel": "images / labels / *_et.txt",
+      "stage": 0,
+      "row": 2,
+      "sources": [
+        {
+          "path": "weed_detection/practice.ipynb",
+          "line": 1,
+          "end_line": 1
+        }
+      ]
+    },
+    {
+      "id": "loader",
+      "type": "backend",
+      "label": "Loader \u00b7 cell 20",
+      "sublabel": "ET lists; missing collate_fn import",
+      "stage": 0,
+      "row": 3,
+      "sources": [
+        {
+          "path": "weed_detection/practice.ipynb",
+          "line": 1,
+          "end_line": 1
+        }
+      ]
+    },
+    {
+      "id": "training",
+      "type": "backend",
+      "label": "Train \u00b7 cells 21\u201322",
+      "sublabel": "metrics / plots; test_loader reused",
+      "stage": 0,
+      "row": 4,
+      "sources": [
+        {
+          "path": "weed_detection/practice.ipynb",
+          "line": 1,
+          "end_line": 1
+        }
+      ]
+    },
+    {
+      "id": "modeldefs",
+      "type": "backend",
+      "label": "deeplab.py / unet.py",
+      "sublabel": "definitions not selected by custom()",
+      "stage": 3,
+      "row": 0,
+      "sources": [
+        {
+          "path": "weed_detection/models/deeplab.py",
+          "line": 25,
+          "end_line": 61
+        },
+        {
+          "path": "weed_detection/models/unet.py",
+          "line": 18,
+          "end_line": 60
+        }
+      ]
+    },
+    {
+      "id": "synthetic",
+      "type": "database",
+      "label": "Synthetic mask",
+      "sublabel": "random circles, 768 \u00d7 768",
+      "stage": 1,
+      "row": 0,
+      "sources": [
+        {
+          "path": "prescription_maps/paper_new/pmap_gen.ipynb",
+          "line": 1,
+          "end_line": 1
+        }
+      ]
+    },
+    {
+      "id": "patchcalc",
+      "type": "backend",
+      "label": "3 \u00d7 3 patch statistics",
+      "sublabel": "256 \u00d7 256; white-pixel fraction",
+      "stage": 1,
+      "row": 1,
+      "sources": [
+        {
+          "path": "prescription_maps/paper_new/pmap_gen.ipynb",
+          "line": 1,
+          "end_line": 1
+        }
+      ]
+    },
+    {
+      "id": "mapimage",
+      "type": "database",
+      "label": "PNG map outputs",
+      "sublabel": "outputs/*.png; not a drone command",
+      "stage": 1,
+      "row": 2,
+      "sources": [
+        {
+          "path": "prescription_maps/paper_new/pmap_gen.ipynb",
+          "line": 1,
+          "end_line": 1
+        }
+      ]
+    },
+    {
+      "id": "pathdata",
+      "type": "database",
+      "label": "In-notebook sample field",
+      "sublabel": "generated / hard-coded patch values",
+      "stage": 2,
+      "row": 0,
+      "sources": [
+        {
+          "path": "prescription_maps/path_planning.ipynb",
+          "line": 1,
+          "end_line": 1
+        }
+      ]
+    },
+    {
+      "id": "route",
+      "type": "backend",
+      "label": "Candidate patch route",
+      "sublabel": "several algorithms; in-memory output",
+      "stage": 2,
+      "row": 1,
+      "sources": [
+        {
+          "path": "prescription_maps/path_planning.ipynb",
+          "line": 1,
+          "end_line": 1
+        }
+      ]
+    },
+    {
+      "id": "fixedpoints",
+      "type": "database",
+      "label": "Fixed XYZ waypoints",
+      "sublabel": "hard-coded list in Python",
+      "stage": 2,
+      "row": 2,
+      "sources": [
+        {
+          "path": "Drone/waypoints.py",
+          "line": 33,
+          "end_line": 42
+        }
+      ]
+    },
+    {
+      "id": "offboard",
+      "type": "backend",
+      "label": "MAVROS setpoint loop",
+      "sublabel": "pose topic, OFFBOARD, arm request",
+      "stage": 2,
+      "row": 3,
+      "sources": [
+        {
+          "path": "Drone/waypoints.py",
+          "line": 53,
+          "end_line": 154
+        }
+      ]
+    },
+    {
+      "id": "px4",
+      "type": "external",
+      "label": "ROS / MAVROS / PX4",
+      "sublabel": "external flight stack; runtime unverified",
+      "stage": 2,
+      "row": 4,
+      "sources": [
+        {
+          "path": "Drone/waypoints.py",
+          "line": 6,
+          "end_line": 9
+        }
+      ]
+    }
+  ],
+  "flows": [
+    {
+      "from": "dataset",
+      "to": "prepare",
+      "label": "cell 17 reads hard-coded Tiles/RedEdge",
+      "variant": "emphasis"
+    },
+    {
+      "from": "prepare",
+      "to": "prepared",
+      "label": "writes filtered data_et and *_et lists",
+      "variant": "default"
+    },
+    {
+      "from": "prepared",
+      "to": "loader",
+      "label": "cell 20 reads image / mask dirs and ET lists",
+      "variant": "emphasis"
+    },
+    {
+      "from": "loader",
+      "to": "training",
+      "label": "test_loader batches feed updates and eval",
+      "variant": "emphasis"
+    },
+    {
+      "from": "synthetic",
+      "to": "patchcalc",
+      "label": "count pixels equal to 255",
+      "variant": "emphasis"
+    },
+    {
+      "from": "patchcalc",
+      "to": "mapimage",
+      "label": "percentage scaled to 0\u2013255; PNGs written",
+      "variant": "default"
+    },
+    {
+      "from": "pathdata",
+      "to": "route",
+      "label": "in-memory tuples or dictionaries",
+      "variant": "emphasis"
+    },
+    {
+      "from": "fixedpoints",
+      "to": "offboard",
+      "label": "fixed XYZ targets",
+      "variant": "emphasis"
+    },
+    {
+      "from": "offboard",
+      "to": "px4",
+      "label": "MAVROS topics and arming / mode services",
+      "variant": "default"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "rose",
+      "title": "Missing end-to-end handoff",
+      "items": [
+        "No code passes segmentation predictions into the prescription-map generator.",
+        "Path-planning experiments do not read the generated map files; the controller does not read route output.",
+        "DeepLab/U-Net definitions are unconnected: active cell 21 calls custom() from absent models.i_model; old_model is imported but its Unet construction is commented out."
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Split and artifact distinctions",
+      "items": [
+        "Notebook cell 5 writes split_data/train.txt and test.txt from list_of_images.txt. Dataset cell 20 instead reads train_et.txt/test_et.txt created by cell 18; this ET pair is missing here.",
+        "The map notebook writes outputs/*.png from synthetic circles. Root loss.png and crop6GT.png are separate artifacts with unverified run provenance.",
+        "Stored notebook outputs and images do not prove this checkout reruns successfully."
+      ]
+    }
+  ]
+}

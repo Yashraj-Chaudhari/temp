@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "skipped",
+  "type": "dataflow",
+  "quality": "showcase",
+  "specification": {
+    "path": "/home/phenotyping/docs/project-review/dataflow.json",
+    "sha256": "6410d60e3a4c7d0d7ec4ab603ed5f38b95cfd866881cba6c3af922d06f8f7b97",
+    "bytes": 4416
+  },
+  "artifact": {
+    "path": "/home/phenotyping/docs/project-review/dataflow.html",
+    "sha256": "a2f64a3d7054f2d342628dafc4d0571ee54277a1528ee53e340da6271b4b8def",
+    "bytes": 844678
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "skipped"
+  },
+  "failedStage": "browser-check",
+  "diagnostics": [
+    {
+      "code": "viewer/chrome-unavailable",
+      "severity": "warning",
+      "message": "No supported browser found. Install Chrome/Chromium (or Microsoft Edge), or set ARCHIFY_CHROME to its executable path.",
+      "subject": {
+        "artifact": "/home/phenotyping/docs/project-review/dataflow.html"
+      },
+      "evidence": {
+        "executable": null
+      },
+      "supportedFixes": [
+        "set ARCHIFY_CHROME to a Chrome/Chromium executable (or Microsoft Edge) and rerun browser-check"
+      ]
+    }
+  ],
+  "diagnosticSummary": {
+    "total": 1,
+    "shown": 1,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/home/phenotyping/docs/project-review/dataflow.finalize.json",
+    "summaryReceipt": "/home/phenotyping/docs/project-review/dataflow.finalize-summary.json",
+    "browserCheckReceipt": "/home/phenotyping/docs/project-review/dataflow.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-28T10:58:53.274Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 1283,
+  "browserCheck": {
+    "requested": true,
+    "ran": false
+  }
+}
