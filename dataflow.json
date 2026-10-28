@@ -14,16 +14,19 @@
   },
   "stages": [
     {
-      "label": "Segmentation experiment"
+      "label": "WeedMap inputs and preparation"
     },
     {
-      "label": "Prescription-map experiment"
+      "label": "Saved model training"
     },
     {
-      "label": "Path and flight-control experiments"
+      "label": "Prescription-map experiments"
     },
     {
-      "label": "Unselected model definitions"
+      "label": "Route and flight prototypes"
+    },
+    {
+      "label": "Unused model definitions"
     }
   ],
   "nodes": [
@@ -45,7 +48,7 @@
     {
       "id": "prepare",
       "type": "backend",
-      "label": "Prep \u00b7 cells 17\u201318",
+      "label": "Prep · cells 17–18",
       "sublabel": "hard-coded filter / copy / split",
       "stage": 0,
       "row": 1,
@@ -75,8 +78,8 @@
     {
       "id": "loader",
       "type": "backend",
-      "label": "Loader \u00b7 cell 20",
-      "sublabel": "ET lists; missing collate_fn import",
+      "label": "Loader · cell 20",
+      "sublabel": "ET lists; missing helper",
       "stage": 0,
       "row": 3,
       "sources": [
@@ -88,12 +91,28 @@
       ]
     },
     {
+      "id": "trainedmodel",
+      "type": "backend",
+      "label": "custom(21,2)",
+      "sublabel": "torchvision DeepLabV3-R50 (hub)",
+      "stage": 1,
+      "row": 1,
+      "sources": [
+        {
+          "path": "weed_detection/practice.ipynb",
+          "line": 1628,
+          "end_line": 1749,
+          "label": "Cell 21 code and saved log"
+        }
+      ]
+    },
+    {
       "id": "training",
       "type": "backend",
-      "label": "Train \u00b7 cells 21\u201322",
-      "sublabel": "metrics / plots; test_loader reused",
-      "stage": 0,
-      "row": 4,
+      "label": "Train · cells 21–22",
+      "sublabel": "400 updates; test-set reused",
+      "stage": 1,
+      "row": 2,
       "sources": [
         {
           "path": "weed_detection/practice.ipynb",
@@ -105,9 +124,9 @@
     {
       "id": "modeldefs",
       "type": "backend",
-      "label": "deeplab.py / unet.py",
-      "sublabel": "definitions not selected by custom()",
-      "stage": 3,
+      "label": "Unused model definitions",
+      "sublabel": "unused ResNet101 / U-Net variants",
+      "stage": 4,
       "row": 0,
       "sources": [
         {
@@ -126,8 +145,8 @@
       "id": "synthetic",
       "type": "database",
       "label": "Synthetic mask",
-      "sublabel": "random circles, 768 \u00d7 768",
-      "stage": 1,
+      "sublabel": "random circles, 768 × 768",
+      "stage": 2,
       "row": 0,
       "sources": [
         {
@@ -140,9 +159,9 @@
     {
       "id": "patchcalc",
       "type": "backend",
-      "label": "3 \u00d7 3 patch statistics",
-      "sublabel": "256 \u00d7 256; white-pixel fraction",
-      "stage": 1,
+      "label": "3 × 3 patch statistics",
+      "sublabel": "256 × 256; white-pixel fraction",
+      "stage": 2,
       "row": 1,
       "sources": [
         {
@@ -157,7 +176,7 @@
       "type": "database",
       "label": "PNG map outputs",
       "sublabel": "outputs/*.png; not a drone command",
-      "stage": 1,
+      "stage": 2,
       "row": 2,
       "sources": [
         {
@@ -172,7 +191,7 @@
       "type": "database",
       "label": "In-notebook sample field",
       "sublabel": "generated / hard-coded patch values",
-      "stage": 2,
+      "stage": 3,
       "row": 0,
       "sources": [
         {
@@ -187,7 +206,7 @@
       "type": "backend",
       "label": "Candidate patch route",
       "sublabel": "several algorithms; in-memory output",
-      "stage": 2,
+      "stage": 3,
       "row": 1,
       "sources": [
         {
@@ -202,7 +221,7 @@
       "type": "database",
       "label": "Fixed XYZ waypoints",
       "sublabel": "hard-coded list in Python",
-      "stage": 2,
+      "stage": 3,
       "row": 2,
       "sources": [
         {
@@ -217,7 +236,7 @@
       "type": "backend",
       "label": "MAVROS setpoint loop",
       "sublabel": "pose topic, OFFBOARD, arm request",
-      "stage": 2,
+      "stage": 3,
       "row": 3,
       "sources": [
         {
@@ -231,8 +250,8 @@
       "id": "px4",
       "type": "external",
       "label": "ROS / MAVROS / PX4",
-      "sublabel": "external flight stack; runtime unverified",
-      "stage": 2,
+      "sublabel": "external; runtime unverified",
+      "stage": 3,
       "row": 4,
       "sources": [
         {
@@ -259,13 +278,13 @@
     {
       "from": "prepared",
       "to": "loader",
-      "label": "cell 20 reads image / mask dirs and ET lists",
+      "label": "ET lists",
       "variant": "emphasis"
     },
     {
       "from": "loader",
-      "to": "training",
-      "label": "test_loader batches feed updates and eval",
+      "to": "trainedmodel",
+      "label": "test_loader batches to model updates",
       "variant": "emphasis"
     },
     {
@@ -277,7 +296,7 @@
     {
       "from": "patchcalc",
       "to": "mapimage",
-      "label": "percentage scaled to 0\u2013255; PNGs written",
+      "label": "percentage scaled to 0–255; PNGs written",
       "variant": "default"
     },
     {
@@ -297,6 +316,12 @@
       "to": "px4",
       "label": "MAVROS topics and arming / mode services",
       "variant": "default"
+    },
+    {
+      "from": "trainedmodel",
+      "to": "training",
+      "label": "logits, loss and saved metrics",
+      "variant": "emphasis"
     }
   ],
   "cards": [
@@ -306,7 +331,7 @@
       "items": [
         "No code passes segmentation predictions into the prescription-map generator.",
         "Path-planning experiments do not read the generated map files; the controller does not read route output.",
-        "DeepLab/U-Net definitions are unconnected: active cell 21 calls custom() from absent models.i_model; old_model is imported but its Unet construction is commented out."
+        "Cell 21 saved output identifies torchvision DeepLabV3-ResNet50 loaded through torch.hub. The separate checked-in ResNet101 model definition is unused in that saved run."
       ]
     },
     {
@@ -314,8 +339,17 @@
       "title": "Split and artifact distinctions",
       "items": [
         "Notebook cell 5 writes split_data/train.txt and test.txt from list_of_images.txt. Dataset cell 20 instead reads train_et.txt/test_et.txt created by cell 18; this ET pair is missing here.",
-        "The map notebook writes outputs/*.png from synthetic circles. Root loss.png and crop6GT.png are separate artifacts with unverified run provenance.",
-        "Stored notebook outputs and images do not prove this checkout reruns successfully."
+        "loss.png shows 75 iterations, while cell 21 performs 400 updates and comments out its save call; it is from a different, unrecorded run. crop6GT.png is a full-field sugarcane ground-truth label map used as input to rotation and tiling.",
+        "Stored notebook outputs and images do not prove this checkout reruns successfully.",
+        "Cell 21 updates the model on test_loader; cell 22 metrics therefore describe a contaminated test set, not an unbiased generalization estimate."
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Input and target encoding caveats",
+      "items": [
+        "Cell 20 computes RGB-derived ExG/ExGR/CIVE expressions in uint8, then casts to float32; overflow happens first. The model input is wrapped RGB encoding, not mathematically correct floating-point indices.",
+        "Cell 20 recolors WeedMap red pixels yellow and black pixels red, then constructs two target channels. Under this visible encoding, weed pixels match neither target color, become [0,0], and argmax maps the tie to class 0 (weed); class 1 is crop + soil/background. This implementation-dependent behavior is not an intentional class encoding. The create_mask helper is missing from this checkout."
       ]
     }
   ]
